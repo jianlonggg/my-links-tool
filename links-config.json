@@ -1,22 +1,23 @@
 [
     {
-        "title": "项目信息报送（第一次）",
+        "title": "项目信息新增",
         "url": "https://appfsmartform.xbongbong.com/userform.html?token=a29f7c11d9a2ea834fea3d06a6cc716cf&shareUserId=woOGQmBgAAY2ioOSlL3lBn7YWZfstHZQ",
-        "description": "节能保温"
+        "description": "新项目第一次报送时使用"
     },
     {
-        "title": "项目跟进信息", 
+        "title": "跟进记录新增", 
         "url": "https://appfsmartform.xbongbong.com/userform.html?token=adedfbe27586d421937348a476cdc491z&shareUserId=woOGQmBgAAY2ioOSlL3lBn7YWZfstHZQ",
-        "description": "节能保温"
+        "description": "已新增项目可以使用此功能报送跟进记录"
     },
     {
         "title": "项目信息查询",
         "url": "https://github.com",
-        "description": "节能保温"
+        "description": "项目信息查询表"
     },
     {
-        "title": "项目跟进信息查询",
+        "title": "跟进记录查询",
         "url": "https://stackoverflow.com",
-        "description": "节能保温"
+        "description": "跟进记录查询表"
     }
 ]
+
