@@ -5,194 +5,234 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>节能保温项目报送系统</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+        :root{
+            --primary:#003b8b;
+            --primary-dark:#002352;
+            --accent:#c59b4c;
+            --bg:#f5f6f8;
+            --text:#222;
+            --border:#e0e3e9;
+            --radius:4px;
+            --maxWidth:1200px;
+            --gap:24px;
         }
-        .container {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        *{box-sizing:border-box;margin:0;padding:0;}
+        body{
+            font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            line-height:1.6;
+            -webkit-font-smoothing:antialiased;
         }
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 2.2em;
+        a{color:inherit;text-decoration:none;}
+        /* 顶部栏 */
+        .topbar{
+            background:#fff;
+            border-bottom:1px solid var(--border);
+            padding:12px 0;
         }
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+        .topbar-inner{
+            max-width:var(--maxWidth);
+            margin:0 auto;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:0 32px;
+            font-size:14px;
+            color:#666;
         }
-        .link-card {
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: #333;
+        /* 主容器 */
+        .header{
+            background:#fff;
+            border-bottom:1px solid var(--border);
+            padding:24px 0 32px;
         }
-        .link-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-color: #667eea;
+        .header-inner{
+            max-width:var(--maxWidth);
+            margin:0 auto;
+            padding:0 32px;
         }
-        .link-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #495057;
+        h1{
+            font-size:24px;
+            font-weight:600;
+            color:var(--primary-dark);
+            margin-bottom:8px;
         }
-        .link-url {
-            font-size: 0.9em;
-            color: #6c757d;
-            word-break: break-all;
+        .subTitle{
+            font-size:14px;
+            color:#666;
         }
-        .refresh-btn {
-            display: block;
-            margin: 20px auto;
-            padding: 12px 30px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background 0.3s ease;
+        /* 操作区 */
+        .actionRow{
+            margin-top:20px;
+            display:flex;
+            align-items:center;
+            gap:16px;
         }
-        .refresh-btn:hover {
-            background: #5a6fd8;
+        .btn-primary{
+            display:inline-flex;
+            align-items:center;
+            gap:6px;
+            background:var(--primary);
+            color:#fff;
+            border:none;
+            border-radius:var(--radius);
+            padding:8px 20px;
+            font-size:14px;
+            cursor:pointer;
+            transition:background .2s;
         }
-        .status {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.9em;
-            color: #6c757d;
+        .btn-primary:hover{background:var(--primary-dark);}
+        .status{
+            font-size:14px;
+            color:#666;
+        }
+        /* 卡片区 */
+        .section{
+            max-width:var(--maxWidth);
+            margin:32px auto;
+            padding:0 32px;
+        }
+        .grid{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:var(--gap);
+        }
+        .card{
+            background:#fff;
+            border:1px solid var(--border);
+            border-radius:var(--radius);
+            padding:28px 32px;
+            position:relative;
+            transition:transform .2s,box-shadow .2s;
+        }
+        .card:hover{
+            transform:translateY(-2px);
+            box-shadow:0 4px 12px rgba(0,0,0,.06);
+        }
+        .card::before{
+            content:"";
+            position:absolute;
+            left:0;
+            top:0;
+            bottom:0;
+            width:4px;
+            background:var(--accent);
+            border-radius:var(--radius) 0 0 var(--radius);
+        }
+        .card-title{
+            font-size:18px;
+            font-weight:600;
+            margin-bottom:8px;
+            color:var(--primary-dark);
+        }
+        .card-url{
+            font-size:14px;
+            color:#666;
+            word-break:break-all;
+            margin-bottom:12px;
+        }
+        .card-desc{
+            font-size:14px;
+            color:#999;
+        }
+        /* 响应式 */
+        @media(max-width:768px){
+            .grid{grid-template-columns:1fr;}
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1> 节能保温项目报送系统</h1>
-        <button class="refresh-btn" onclick="loadLinks()">🔄 刷新链接</button>
-        <div class="status" id="status">点击刷新按钮获取最新链接</div>
-        
-        <div class="links-grid" id="linksContainer">
-            <!-- 链接将在这里动态加载 -->
+    <!-- 顶部信息条 -->
+    <div class="topbar">
+        <div class="topbar-inner">
+            <span>节能保温项目报送系统</span>
+            <span id="datetime"></span>
         </div>
     </div>
 
+    <!-- 页头 -->
+    <header class="header">
+        <div class="header-inner">
+            <h1>节能保温项目报送系统</h1>
+            <p class="subTitle">项目信息新增 · 跟进记录 · 一站式报送入口</p>
+            <div class="actionRow">
+                <button class="btn-primary" onclick="loadLinks()">
+                    <span>↻</span>
+                    <span>同步最新配置</span>
+                </button>
+                <span class="status" id="status">点击按钮获取最新链接</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 卡片区 -->
+    <section class="section">
+        <div class="grid" id="linksContainer"></div>
+    </section>
+
     <script>
-        // 默认链接配置
+        /* 与原来逻辑保持一致，仅样式替换 */
         const defaultLinks = [
-            {
-                title: "默认链接 1",
-                url: "https://www.example1.com",
-                description: "这是第一个默认链接"
-            },
-            {
-                title: "默认链接 2", 
-                url: "https://www.example2.com",
-                description: "这是第二个默认链接"
-            },
-            {
-                title: "默认链接 3",
-                url: "https://www.example3.com", 
-                description: "这是第三个默认链接"
-            },
-            {
-                title: "默认链接 4",
-                url: "https://www.example4.com",
-                description: "这是第四个默认链接"
-            }
+            {title:"默认链接1",url:"https://www.example1.com",description:"这是第一个默认链接"},
+            {title:"默认链接2",url:"https://www.example2.com",description:"这是第二个默认链接"},
+            {title:"默认链接3",url:"https://www.example3.com",description:"这是第三个默认链接"},
+            {title:"默认链接4",url:"https://www.example4.com",description:"这是第四个默认链接"}
         ];
 
-        // 加载链接的函数
-        async function loadLinks() {
-            const statusEl = document.getElementById('status');
-            const containerEl = document.getElementById('linksContainer');
-            
-            statusEl.textContent = '正在加载链接...';
-            
-            try {
-                // 尝试从后台获取链接配置
-                // 这里你可以替换为你的实际API端点
-                const response = await fetch('links-config.json');
-                
-                let links;
-                if (response.ok) {
-                    links = await response.json();
-                    statusEl.textContent = '链接已更新 ✓';
-                } else {
-                    // 如果获取失败，使用默认链接
-                    links = defaultLinks;
-                    statusEl.textContent = '使用默认链接（后台配置获取失败）';
-                }
-                
-                // 清空容器
-                containerEl.innerHTML = '';
-                
-                // 创建链接卡片
-                links.forEach(link => {
-                    const card = document.createElement('a');
-                    card.href = link.url;
-                    card.target = "_blank";
-                    card.className = 'link-card';
-                    
-                    card.innerHTML = `
-                        <div class="link-title">${link.title}</div>
-                        <div class="link-url">${link.url}</div>
-                        ${link.description ? `<div style="margin-top: 10px; font-size: 0.85em; color: #868e96;">${link.description}</div>` : ''}
+        async function loadLinks(){
+            const statusEl=document.getElementById('status');
+            const containerEl=document.getElementById('linksContainer');
+            statusEl.textContent='正在同步...';
+            try{
+                const res=await fetch('links-config.json');
+                const links=res.ok ? await res.json() : defaultLinks;
+                statusEl.textContent='配置已同步 ✓';
+                containerEl.innerHTML='';
+                links.forEach(l=>{
+                    const card=document.createElement('a');
+                    card.href=l.url;
+                    card.target='_blank';
+                    card.className='card';
+                    card.innerHTML=`
+                        <div class="card-title">${l.title}</div>
+                        <div class="card-url">${l.url}</div>
+                        ${l.description?`<div class="card-desc">${l.description}</div>`:''}
                     `;
-                    
                     containerEl.appendChild(card);
                 });
-                
-            } catch (error) {
-                console.error('加载链接失败:', error);
-                statusEl.textContent = '加载失败，请检查网络连接';
-                
-                // 显示默认链接作为备选
-                displayDefaultLinks();
+            }catch(e){
+                console.error(e);
+                statusEl.textContent='同步失败，请检查网络';
+                displayDefault();
             }
         }
-
-        // 显示默认链接的函数
-        function displayDefaultLinks() {
-            const containerEl = document.getElementById('linksContainer');
-            containerEl.innerHTML = '';
-            
-            defaultLinks.forEach(link => {
-                const card = document.createElement('a');
-                card.href = link.url;
-                card.target = "_blank";
-                card.className = 'link-card';
-                
-                card.innerHTML = `
-                    <div class="link-title">${link.title}</div>
-                    <div class="link-url">${link.url}</div>
-                    ${link.description ? `<div style="margin-top: 10px; font-size: 0.85em; color: #868e96;">${link.description}</div>` : ''}
+        function displayDefault(){
+            const containerEl=document.getElementById('linksContainer');
+            containerEl.innerHTML='';
+            defaultLinks.forEach(l=>{
+                const card=document.createElement('a');
+                card.href=l.url;
+                card.target='_blank';
+                card.className='card';
+                card.innerHTML=`
+                    <div class="card-title">${l.title}</div>
+                    <div class="card-url">${l.url}</div>
+                    ${l.description?`<div class="card-desc">${l.description}</div>`:''}
                 `;
-                
                 containerEl.appendChild(card);
             });
         }
+        window.addEventListener('load',loadLinks);
 
-        // 页面加载时自动加载链接
-        window.addEventListener('load', loadLinks);
-        
-        // 可选：定时自动刷新（每30秒）
-        // setInterval(loadLinks, 30000);
+        /* 右上角时间 */
+        function tick(){
+            const dt=new Date();
+            document.getElementById('datetime').textContent=
+                dt.toLocaleDateString('zh-CN')+' '+dt.toLocaleTimeString('zh-CN');
+        }
+        tick();
+        setInterval(tick,1000);
     </script>
 </body>
 </html>
-
